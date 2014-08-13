@@ -2,7 +2,7 @@
 =============
 
 - tng-api-custom is installed in wordpress/wp-content/plugins/
-#- Shortcodes are
+# - Shortcodes are
 - 'BirthdaysPlusOne' Lists Birthdays for next month. 
 - 'DanniversariesPlusOne` Lists Death Anniversaries for Next Month
 - `Manniversariesplusone` Lists Marriage Anniversaries for Next Month
