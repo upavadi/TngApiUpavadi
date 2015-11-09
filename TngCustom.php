@@ -8,7 +8,8 @@ class TngApiCustom_TngCustom extends Upavadi_TngCustomContent
         "LandingPage",
         "BirthdaysPlusOne",
 		"ManniversariesPlusOne",
-		"DanniversariesPlusOne"
+		"DanniversariesPlusOne",
+		"FamilySheet"
     );
 
     public function __construct(Upavadi_TngContent $content)
@@ -198,7 +199,10 @@ SQL;
 SELECT personid,
        firstname,
        lastname,
+	   birthdate,
+	   birthdatetr,
        deathdate,
+	   deathdatetr,
        deathplace,
        gedcom,
        Year(Now()) - Year(deathdatetr) AS Years
@@ -216,6 +220,51 @@ SQL;
         }
         return $rows;
     }
+	public function getmemberid()
+	{	
+	$memberdb = new wpdb($DB_USER, $DB_PASSWORD, $DB_HOST);
+    $memberdb ->show_errors;
 	
+	}
+public function getTngUrl($url)
+    {
+        $url = esc_attr(get_option('tng-api-tng-url'));
+		return $url;
+    var_dump($url);
+	}
+ public function getDefaultMedia($personId = null)
+    {
+
+        if (!$personId) {
+            $personId = $this->currentPerson;
+        }
+        $user = $this->getTngUser();
+        $userPrivate = $user['allow_private'];
+        $gedcom = $user['gedcom'];
+        // If we are searching, enter $tree value
+       
+        $person = $this->getPerson($personId, $gedcom);
+        $personPrivate = $person['private'];
+
+        if ($personPrivate > $userPrivate) {
+            return array();
+        }
+        $treeWhere = null;
+        if ($gedcom) {
+            $treeWhere = ' AND m.gedcom = "' . $gedcom . '"';
+        }
+	$sql = <<<SQL
+SELECT *
+FROM   {$this->tables['media_table']} as ml
+    LEFT JOIN {$this->tables['medialinks_table']} AS m
+              ON ml.mediaID = m.mediaID
+where personID = '{$personId}' AND m.defphoto = "1"
+SQL;
+        $result = $this->query($sql);
+        $row = $result->fetch_assoc();
+        return $row;
+    }
 	
 }
+
+    
