@@ -22,7 +22,6 @@ Clicking on a name takes you to the Individual's Family Page</br> Clicking on VI
 		$name = $danniversary['firstname']. " ". $danniversary['lastname'];
 		$dmedia = $tngcontent->getDefaultMedia($personId, $tree);
 		$mediaPath = $photosPath."/". $dmedia['thumbpath'];
-		
 		//get age at death
 		if ($danniversary['birthdatetr'] !== "0000-00-00") {
 			$d_birtharray = explode("-", ($danniversary['birthdatetr']));
