@@ -45,6 +45,7 @@ Clicking on a name takes you to the Individual's Family Page</br> Clicking on VI
 			$ageAtDeath = $i->format("%Y");
 			}	else { 	$ageAtDeath = "";
 		}	
+		
 		?>
 		<tr>
 			<td style="text-align: center"><div>
@@ -54,7 +55,7 @@ Clicking on a name takes you to the Individual's Family Page</br> Clicking on VI
 			
 			<a href="/family/?personId=<?php echo $danniversary['personid'];?>">
 			<?php echo $name; ?></a></div></td>
-			<td><?php echo $danniversary['deathdate']; ?></td>
+			<td><?php echo $danniversary['deathdatetr']; ?></td>
 			<td><?php echo $danniversary['deathplace']; ?></td>
 			<td style="text-align: center"><?php echo $danniversary['Years']; ?></td>
 			<td style="text-align: center"><?php echo $ageAtDeath; ?></td>
