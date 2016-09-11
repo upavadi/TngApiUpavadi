@@ -274,9 +274,4 @@ SQL;
         return $row;
     }
 	
-	
-
-	
 }
-
-    
