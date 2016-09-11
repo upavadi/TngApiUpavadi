@@ -6,10 +6,16 @@ class TngApiCustom_TngCustom extends Upavadi_TngCustomContent
     protected $shortCodes = array(
         "MyShortcode",
         "LandingPage",
+		"LandingPageCustom",
         "BirthdaysPlusOne",
 		"ManniversariesPlusOne",
 		"DanniversariesPlusOne",
-		"FamilySheet"
+		"FamilySheet",
+		"BirthdaysCustom",
+		"ManniversariesCustom",
+		"DanniversariesCustom"
+		
+		
     );
 
     public function __construct(Upavadi_TngContent $content)
@@ -28,15 +34,15 @@ class TngApiCustom_TngCustom extends Upavadi_TngCustomContent
     public function getBirthdaysPlusOne($month)
     {
         $tables = $this->content->getTngTables();
-
-        $sql = <<<SQL
+		$newDate = date('Y', strtotime('+1 month'));
+		$sql = <<<SQL
 SELECT personid,
        firstname,
        lastname,
        birthdate,
        birthplace,
        gedcom,
-       Year(Now()) - Year(birthdatetr) AS Age
+       "$newDate" - Year(birthdatetr) AS Age
 FROM   {$tables['people_table']}
 WHERE  Month(birthdatetr) = MONTH(ADDDATE(now(), INTERVAL 1 month))
        AND living = 1
@@ -129,6 +135,7 @@ SQL;
     public function getMarriageAnniversariesPlusOne($month)
     {
 		$tables = $this->content->getTngTables();
+		$newDate = date('Y', strtotime('+1 month'));
 		$sql = <<<SQL
 SELECT h.gedcom,
 	   h.personid AS personid1,
@@ -140,7 +147,7 @@ SELECT h.gedcom,
 	   f.familyID,
        f.marrdate,
        f.marrplace,
-       Year(Now()) - Year(marrdatetr) AS Years
+       "$newDate" - Year(marrdatetr) AS Years
 FROM   {$tables['families_table']} as f
     LEFT JOIN {$tables['people_table']} AS h
               ON f.husband = h.personid
@@ -195,6 +202,8 @@ SQL;
 		public function getDeathAnniversariesPlusOne($month)
     {
         $tables = $this->content->getTngTables();
+		
+		$newDate = date('Y', strtotime('+1 month'));
 		$sql = <<<SQL
 SELECT personid,
        firstname,
@@ -205,7 +214,7 @@ SELECT personid,
 	   deathdatetr,
        deathplace,
        gedcom,
-       Year(Now()) - Year(deathdatetr) AS Years
+       "$newDate" - Year(deathdatetr) AS Years
 FROM   {$tables['people_table']}
 WHERE  Month(deathdatetr) = MONTH(ADDDATE(now(), INTERVAL 1 month))
        AND living = 0
@@ -230,7 +239,7 @@ public function getTngUrl($url)
     {
         $url = esc_attr(get_option('tng-api-tng-url'));
 		return $url;
-    var_dump($url);
+    
 	}
  public function getDefaultMedia($personId = null)
     {
@@ -264,6 +273,9 @@ SQL;
         $row = $result->fetch_assoc();
         return $row;
     }
+	
+	
+
 	
 }
 
