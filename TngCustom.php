@@ -6,8 +6,7 @@ class TngApiCustom_TngCustom extends Upavadi_TngCustomContent
     protected $shortCodes = array(
         "MyShortcode",
         "LandingPage",
-		"LandingPageCustom",
-        "BirthdaysPlusOne",
+		"BirthdaysPlusOne",
 		"ManniversariesPlusOne",
 		"DanniversariesPlusOne",
 		"FamilySheet",
@@ -107,6 +106,7 @@ SELECT h.gedcom,
 	   f.familyID,
        f.marrdate,
        f.marrplace,
+       f.divdate,
        Year(Now()) - Year(marrdatetr) AS Years
 FROM   {$tables['families_table']} as f
     LEFT JOIN {$tables['people_table']} AS h
@@ -147,6 +147,7 @@ SELECT h.gedcom,
 	   f.familyID,
        f.marrdate,
        f.marrplace,
+       f.divdate,
        "$newDate" - Year(marrdatetr) AS Years
 FROM   {$tables['families_table']} as f
     LEFT JOIN {$tables['people_table']} AS h

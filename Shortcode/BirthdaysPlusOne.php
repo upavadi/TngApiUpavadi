@@ -8,7 +8,8 @@ class TngApiCustom_Shortcode_BirthdaysPlusOne extends Upavadi_Shortcode_Abstract
     {
         //$this->content->init();
 
-        $month = date('m');
+        $month = date('m' + 1);
+		
         $birthdaysplusone = $this->custom->getBirthdaysPlusOne($month);
         // Get Media
 		$url = $this->content->getTngUrl();

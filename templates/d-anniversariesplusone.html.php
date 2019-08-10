@@ -55,11 +55,11 @@ Clicking on a name takes you to the Individual's Family Page</br> Clicking on VI
 			
 			<a href="/family/?personId=<?php echo $danniversary['personid'];?>">
 			<?php echo $name; ?></a></div></td>
-			<td><?php echo $danniversary['deathdatetr']; ?></td>
-			<td><?php echo $danniversary['deathplace']; ?></td>
+			<td style="text-align: center"><?php echo $danniversary['deathdate']; ?></td>
+			<td style="text-align: center"><?php echo $danniversary['deathplace']; ?></td>
 			<td style="text-align: center"><?php echo $danniversary['Years']; ?></td>
 			<td style="text-align: center"><?php echo $ageAtDeath; ?></td>
-			<td><a href="../genealogy/relationship.php?altprimarypersonID=&savedpersonID=&secondpersonID=<?php echo $danniversary['personid'];?>&maxrels=2&disallowspouses=0&generations=15&tree=upavadi_1&primarypersonID=<?php echo $currentperson; ?>"><?php echo "View"?></td>
+			<td style="text-align: center"><a href="../genealogy/relationship.php?altprimarypersonID=&savedpersonID=&secondpersonID=<?php echo $danniversary['personid'];?>&maxrels=2&disallowspouses=0&generations=15&tree=upavadi_1&primarypersonID=<?php echo $currentperson; ?>"><?php echo "View"?></td>
 			
 		</tr>
 <?php endforeach; ?>

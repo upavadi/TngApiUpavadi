@@ -7,7 +7,7 @@ class TngApiCustom_Shortcode_DanniversariesPlusOne extends Upavadi_Shortcode_Abs
     public function show()
     {
         //$this->content->init();
-		$month = date('m');
+		$month = date('m' +1);
         $danniversariesplusone = $this->custom->getDeathAnniversariesPlusOne($month);
         // Get Media
 		$url = $this->content->getTngUrl();

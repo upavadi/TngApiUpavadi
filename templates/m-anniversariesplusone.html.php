@@ -40,12 +40,12 @@ Clicking on a name takes you to the Individual's Family Page.</br>
 			<a href="/family/?personId=<?php echo $manniversary['personid2'];?>">
 			<?php echo $manniversary['firstname2']; ?><?php echo $manniversary['lastname2']; ?></a></div></td>
 				
-			<td><?php echo $manniversary['marrdate']; ?></a></td>
+			<td style="text-align: center"><?php echo $manniversary['marrdate']; ?></a></td>
 			
 			
 			
-			<td><?php echo $manniversary['marrplace']; ?></td>
-			<td><?php echo $manniversary['Years']; ?></td>
+			<td style="text-align: center"><?php echo $manniversary['marrplace']; ?></td>
+			<td style="text-align: center"><?php echo $manniversary['Years']; ?></td>
 		</tr>
 <?php endforeach; ?>
 	</tbody>
