@@ -14,10 +14,27 @@ Clicking on a name takes you to the Individual's Family Page
 			<th style="background-color: #EDEDED;">Relationship</th>
 	
 	<?php foreach ($birthdaysplusone as $birthday): 
-	$tree = $birthday['gedcom'];
+	$tree = $birthday['gedcom']; //var_dump($birthday);
 	$personId = $birthday['personid'];
+	$parentId = $birthday['famc']; //var_dump($parentId);
 	$dmedia = $tngcontent->getDefaultMedia($personId, $tree);
+	$sortBy = null;
+	$families = $tngcontent->getFamilyUser($personId, $tree, null);
+	$parents = $tngcontent->getFamilyById($parentId, $tree = null); 
+	$personPrivacy = $birthday['private'];
+	$familyPrivacy = $families[0]['private'];
+	$parentPrivacy = $parents['private'];
 	$mediaPath = $photosPath."/". $dmedia['thumbpath'];
+	$tngFolder = $tngcontent->getTngIntegrationPath();
+	/**** privacy: if individual is private OR family is private (husband or wife) or famc is private (Parents) ***/
+	if ($personPrivacy || $familyPrivacy || $parentPrivacy) {
+		$birthday['firstname'] = 'Private:';
+		$birthday['lastname'] = ' Details withheld';
+		$birthday['birthdate'] = "?";
+		$dmedia['thumbpath'] = "";
+		$birthday['Age'] = "";
+	}
+	
 	?>
 		<tr>
 			<td style="text-align: center"><div>
@@ -29,11 +46,10 @@ Clicking on a name takes you to the Individual's Family Page
             <td style="text-align: center"><?php echo $birthday['birthdate']; ?></td>
 			<td style="text-align: center"><?php echo $birthday['birthplace']; ?></td>
 			<td style="text-align: center";><?php echo $birthday['Age']; ?></td>
-			<td style="text-align: center";><a href="../genealogy/relationship.php?altprimarypersonID=&savedpersonID=&secondpersonID=<?php echo $birthday['personid'];?>&maxrels=2&disallowspouses=0&generations=15&tree=upavadi_1&primarypersonID=<?php echo $currentperson; ?>"><?php echo "View"?></td>
+			<td style="text-align: center";><a href="../<?php echo $tngFolder; ?>/relationship.php?altprimarypersonID=&savedpersonID=&secondpersonID=<?php echo $birthday['personid'];?>&maxrels=2&disallowspouses=0&generations=15&tree=upavadi_1&primarypersonID=<?php echo $currentperson; ?>"><?php echo "View"?></td>
 			
 		</tr>
 		
 <?php endforeach; ?>
 	</tbody>
 </table>
-
