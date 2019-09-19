@@ -40,10 +40,12 @@ SELECT personid,
        lastname,
        birthdate,
        birthplace,
+       private,
+       famc,
        gedcom,
        "$newDate" - Year(birthdatetr) AS Age
 FROM   {$tables['people_table']}
-WHERE  Month(birthdatetr) = MONTH(ADDDATE(now(), INTERVAL 1 month))
+WHERE  Month(birthdatetr) = MONTH(ADDDATE(now(), INTERVAL +1 month))
        AND living = 1
 ORDER  BY Day(birthdatetr),
           lastname
