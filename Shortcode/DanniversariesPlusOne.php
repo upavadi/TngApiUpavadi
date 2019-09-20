@@ -7,10 +7,11 @@ class TngApiCustom_Shortcode_DanniversariesPlusOne extends Upavadi_Shortcode_Abs
     public function show()
     {
         //$this->content->init();
-		$month = date('m' +1);
+		$month = date('m') +1;
         $danniversariesplusone = $this->custom->getDeathAnniversariesPlusOne($month);
         // Get Media
-		$url = $this->content->getTngUrl();
+        $url = $this->content->getTngUrl();
+        $tngFolder = $this->content->getTngIntegrationPath();
 		$photos = $this->content->getTngPhotoFolder();
 		$photosPath = $url. $photos;
 		//get and hold current user
@@ -21,7 +22,8 @@ class TngApiCustom_Shortcode_DanniversariesPlusOne extends Upavadi_Shortcode_Abs
 			'gedcom' => $tree,
 			'personid' => $personId,
             'date' => date('F Y', strtotime('+1 month')),
-			'currentperson' => $currentperson,
+            'currentperson' => $currentperson,
+            'tngFolder' => $tngFolder,
 			'photosPath' => $photosPath
 			
         );

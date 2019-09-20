@@ -149,6 +149,7 @@ SELECT h.gedcom,
 	   f.familyID,
        f.marrdate,
        f.marrplace,
+       f.private,
        f.divdate,
        "$newDate" - Year(marrdatetr) AS Years
 FROM   {$tables['families_table']} as f
@@ -156,7 +157,7 @@ FROM   {$tables['families_table']} as f
               ON f.husband = h.personid
        LEFT JOIN {$tables['people_table']} AS w
               ON f.wife = w.personid
-WHERE  Month(f.marrdatetr) = MONTH(ADDDATE(now(), INTERVAL 1 month))
+WHERE  Month(f.marrdatetr) = MONTH(ADDDATE(now(), INTERVAL 0 month))
        
 ORDER  BY Day(f.marrdatetr)
           

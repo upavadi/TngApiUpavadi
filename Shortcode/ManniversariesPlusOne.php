@@ -9,13 +9,12 @@ class TngApiCustom_Shortcode_ManniversariesPlusOne extends Upavadi_Shortcode_Abs
         //$this->content->init();
 
         $month = date('m' + 1);
-        $manniversariesplusone = $this->custom->getMarriageAnniversariesPlusOne($month);
+        $manniversariesplusone = $this->custom->getMarriageAnniversariesPlusOne($month); //custom137
         // Get Media
 		$url = $this->content->getTngUrl();
 		$photos = $this->content->getTngPhotoFolder();
 		$photosPath = $url. $photos;
-		
-        //get and hold current user
+		//get and hold current user
 		$currentperson = $this->content->getCurrentPersonId($person['personID']);
         $context = array(
             'month' => $month,

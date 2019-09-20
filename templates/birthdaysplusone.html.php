@@ -8,10 +8,10 @@ Clicking on a name takes you to the Individual's Family Page
 <table border=1 cellSpacing=1 cellPadding=1>
 	<tbody>
 			<th style="background-color: #EDEDED; text-align: center;">Name</th>
-			<th style="background-color: #EDEDED;">Date</th>
-			<th style="background-color: #EDEDED;">Birth Place </th>
+			<th style="background-color: #EDEDED; text-align: center;">Date</th>
+			<th style="background-color: #EDEDED; text-align: center;">Birth Place </th>
 			<th style="background-color: #EDEDED; text-align: center;">Age </th>
-			<th style="background-color: #EDEDED;">Relationship</th>
+			<th style="background-color: #EDEDED; text-align: center;">Relationship</th>
 	
 	<?php foreach ($birthdaysplusone as $birthday): 
 	$tree = $birthday['gedcom']; //var_dump($birthday);

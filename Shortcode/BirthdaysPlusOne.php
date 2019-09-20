@@ -10,13 +10,12 @@ class TngApiCustom_Shortcode_BirthdaysPlusOne extends Upavadi_Shortcode_Abstract
 
         $month = date("m")+1;
         $birthdaysplusone = $this->custom->getBirthdaysPlusOne($month);
-        //$families = $this->content->getFamilyUser($person['personID'], $tree, $sortBy);
         // Get Media
 		$url = $this->content->getTngUrl();
 		$photos = $this->content->getTngPhotoFolder();
 		$photosPath = $url. $photos;
 		//get and hold current user
-		$currentperson = $this->content->getCurrentPersonId($person['personID']);
+		$currentperson = $this->content->getCurrentPersonId($person['personID']); 
         $context = array(
             'month' => $month,
 			'gedcom' => $tree,

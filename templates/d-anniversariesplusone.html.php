@@ -8,17 +8,16 @@ Clicking on a name takes you to the Individual's Family Page</br> Clicking on VI
 			<th class="theader">Death Place</th>
 			<th class="theader" style="text-align: center">Years</th>
 			<th class="theader" style="text-align: center">Age at Death</th>
+			<th class="theader" style="text-align: center">Birth date</th>
 			<th class="theader">Relationship</th>
-			
-			
 		
-		
-	
 		<?php 
 		$tngcontent = Upavadi_TngContent::instance();
 		foreach ($danniversariesplusone as $danniversary):
 		$tree = $danniversary['gedcom'];
 		$personId = $danniversary['personid'];
+		$tngfolder = $tngFolder;
+		$birthdate = $danniversary['birthdate'];
 		$name = $danniversary['firstname']. " ". $danniversary['lastname'];
 		$dmedia = $tngcontent->getDefaultMedia($personId, $tree);
 		$mediaPath = $photosPath."/". $dmedia['thumbpath'];
@@ -45,7 +44,7 @@ Clicking on a name takes you to the Individual's Family Page</br> Clicking on VI
 			$ageAtDeath = $i->format("%Y");
 			}	else { 	$ageAtDeath = "";
 		}	
-		
+		http://localhost/tng1013/getperson.php?personID=I580
 		?>
 		<tr>
 			<td style="text-align: center"><div>
@@ -53,13 +52,14 @@ Clicking on a name takes you to the Individual's Family Page</br> Clicking on VI
 			<img src="<?php 
 			echo "$mediaPath";  ?>" border='1' height='50' border-color='#000000'/> <?php } ?><br /> 
 			
-			<a href="/family/?personId=<?php echo $danniversary['personid'];?>">
+			<a href="../<?php echo $tngfolder;?>/getperson.php?personID=<?php echo $danniversary['personid'];?>">
 			<?php echo $name; ?></a></div></td>
 			<td style="text-align: center"><?php echo $danniversary['deathdate']; ?></td>
 			<td style="text-align: center"><?php echo $danniversary['deathplace']; ?></td>
 			<td style="text-align: center"><?php echo $danniversary['Years']; ?></td>
 			<td style="text-align: center"><?php echo $ageAtDeath; ?></td>
-			<td style="text-align: center"><a href="../genealogy/relationship.php?altprimarypersonID=&savedpersonID=&secondpersonID=<?php echo $danniversary['personid'];?>&maxrels=2&disallowspouses=0&generations=15&tree=upavadi_1&primarypersonID=<?php echo $currentperson; ?>"><?php echo "View"?></td>
+			<td style="text-align: center"><?php echo $birthdate; ?></td>
+			<td style="text-align: center"><a href="../<?php echo $tngfolder;?>/relationship.php?altprimarypersonID=&savedpersonID=&secondpersonID=<?php echo $danniversary['personid'];?>&maxrels=2&disallowspouses=0&generations=15&tree=upavadi_1&primarypersonID=<?php echo $currentperson; ?>"><?php echo "View"?></td>
 			
 		</tr>
 <?php endforeach; ?>
