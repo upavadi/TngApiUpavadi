@@ -8,7 +8,7 @@
 </head>
     <?php echo "<strong>". $date. "</strong>"; ?>
 </span>
-<table class="table table-striped">
+<table class="table">
     <tr>
         <td><img src="<?php echo $profileImage; ?>" class='profile-image' /></td>
         <td>
