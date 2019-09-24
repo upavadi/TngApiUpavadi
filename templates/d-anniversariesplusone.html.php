@@ -4,12 +4,12 @@ Clicking on a name takes you to the Individual's Family Page</br> Clicking on VI
 	<tbody>
 		
 			<th class="theader" style="text-align: center">Name</th>
-			<th class="theader">Date</th>
-			<th class="theader">Death Place</th>
+			<th class="theader" style="text-align: center">Date</th>
+			<th class="theader" style="text-align: center">Death Place</th>
 			<th class="theader" style="text-align: center">Years</th>
 			<th class="theader" style="text-align: center">Age at Death</th>
 			<th class="theader" style="text-align: center">Birth date</th>
-			<th class="theader">Relationship</th>
+			<th class="theader"style="text-align: center">Relationship</th>
 		
 		<?php 
 		$tngcontent = Upavadi_TngContent::instance();

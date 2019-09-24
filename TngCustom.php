@@ -29,6 +29,7 @@ class TngApiCustom_TngCustom extends Upavadi_TngCustomContent
 
         return $name;
     }
+    
 
     public function getBirthdaysPlusOne($month)
     {
@@ -45,7 +46,7 @@ SELECT personid,
        gedcom,
        "$newDate" - Year(birthdatetr) AS Age
 FROM   {$tables['people_table']}
-WHERE  Month(birthdatetr) = MONTH(ADDDATE(now(), INTERVAL +1 month))
+WHERE  Month(birthdatetr) = MONTH(ADDDATE(now(), INTERVAL +1  month))
        AND living = 1
 ORDER  BY Day(birthdatetr),
           lastname
@@ -69,6 +70,8 @@ SELECT personid,
        lastname,
        birthdate,
        birthplace,
+       private,
+       famc,
        gedcom,
        Year(Now()) - Year(birthdatetr) AS Age
 FROM   {$tables['people_table']}
@@ -108,6 +111,7 @@ SELECT h.gedcom,
 	   f.familyID,
        f.marrdate,
        f.marrplace,
+       f.private,
        f.divdate,
        Year(Now()) - Year(marrdatetr) AS Years
 FROM   {$tables['families_table']} as f
@@ -157,7 +161,7 @@ FROM   {$tables['families_table']} as f
               ON f.husband = h.personid
        LEFT JOIN {$tables['people_table']} AS w
               ON f.wife = w.personid
-WHERE  Month(f.marrdatetr) = MONTH(ADDDATE(now(), INTERVAL 0 month))
+WHERE  Month(f.marrdatetr) = MONTH(ADDDATE(now(), INTERVAL +1 month))
        
 ORDER  BY Day(f.marrdatetr)
           

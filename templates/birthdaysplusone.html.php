@@ -26,6 +26,7 @@ Clicking on a name takes you to the Individual's Family Page
 	$parentPrivacy = $parents['private'];
 	$mediaPath = $photosPath."/". $dmedia['thumbpath'];
 	$tngFolder = $tngcontent->getTngIntegrationPath();
+	$view = View;
 	/**** privacy: if individual is private OR family is private (husband or wife) or famc is private (Parents) ***/
 	if ($personPrivacy || $familyPrivacy || $parentPrivacy) {
 		$birthday['firstname'] = 'Private:';
@@ -33,8 +34,8 @@ Clicking on a name takes you to the Individual's Family Page
 		$birthday['birthdate'] = "?";
 		$dmedia['thumbpath'] = "";
 		$birthday['Age'] = "";
+		$view = "";
 	}
-	
 	?>
 		<tr>
 			<td style="text-align: center"><div>
@@ -46,7 +47,7 @@ Clicking on a name takes you to the Individual's Family Page
             <td style="text-align: center"><?php echo $birthday['birthdate']; ?></td>
 			<td style="text-align: center"><?php echo $birthday['birthplace']; ?></td>
 			<td style="text-align: center";><?php echo $birthday['Age']; ?></td>
-			<td style="text-align: center";><a href="../<?php echo $tngFolder; ?>/relationship.php?altprimarypersonID=&savedpersonID=&secondpersonID=<?php echo $birthday['personid'];?>&maxrels=2&disallowspouses=0&generations=15&tree=upavadi_1&primarypersonID=<?php echo $currentperson; ?>"><?php echo "View"?></td>
+			<td style="text-align: center";><a href="../<?php echo $tngFolder; ?>/relationship.php?altprimarypersonID=&savedpersonID=&secondpersonID=<?php echo $birthday['personid'];?>&maxrels=2&disallowspouses=0&generations=15&tree=upavadi_1&primarypersonID=<?php echo $currentperson; ?>"><?php echo $view?></td>
 			
 		</tr>
 		

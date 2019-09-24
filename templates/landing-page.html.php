@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Events - Toaday</title>
 </head>
-    <?php echo $date; ?>
+    <?php echo "<strong>". $date. "</strong>"; ?>
 </span>
-<table>
+<table class="table table-striped">
     <tr>
         <td><img src="<?php echo $profileImage; ?>" class='profile-image' /></td>
         <td>
@@ -25,6 +25,7 @@
                 </span>
             </h2>
         </td>
+    </tr>
 </table>
 <table>
     <tr>
