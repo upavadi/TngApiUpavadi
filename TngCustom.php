@@ -12,10 +12,19 @@ class TngApiCustom_TngCustom extends Upavadi_TngCustomContent
 		"FamilySheet",
 		"BirthdaysCustom",
 		"ManniversariesCustom",
-		"DanniversariesCustom"
+        "DanniversariesCustom",
+        "DanniversariesForFb"
+        
+        
 		
 		
     );
+
+    public function getTngPhotoFolder()
+    {
+        return esc_attr(get_option('tng-api-tng-photo-folder'));
+    }
+    
 
     public function __construct(Upavadi_TngContent $content)
     {

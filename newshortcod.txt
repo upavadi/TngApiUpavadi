@@ -1,0 +1,36 @@
+How to add shortcode to the tng-custom
+Shortcode is
+[tngcustom_landing_page]
+
+In LandingPage.php
+
+class TngApiCustom_Shortcode_LandingPage extends Upavadi_Shortcode_AbstractCustomShortcode
+{
+    const SHORTCODE = 'tngcustom_landing_page';
+    const SHORTCODE = 'tngcustom_landing_page';
+
+    public function show()
+    {
+
+
+        return $this->templates->render('landing-page.html', $context);
+    } 
+
+}
+
+In TngCustom.php
+
+    protected $shortCodes = array(
+        "MyShortcode",
+        "LandingPage",
+		"BirthdaysPlusOne",
+		"ManniversariesPlusOne",
+		"DanniversariesPlusOne",
+		"FamilySheet",
+		"BirthdaysCustom",
+		"ManniversariesCustom",
+        "DanniversariesCustom"
+        
+		
+		
+    );
