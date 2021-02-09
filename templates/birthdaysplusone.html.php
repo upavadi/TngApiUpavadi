@@ -26,7 +26,7 @@ Clicking on a name takes you to the Individual's Family Page
 	$parentPrivacy = $parents['private'];
 	$mediaPath = $photosPath."/". $dmedia['thumbpath'];
 	$tngFolder = $tngcontent->getTngIntegrationPath();
-	$view = View;
+	$view = "View";
 	/**** privacy: if individual is private OR family is private (husband or wife) or famc is private (Parents) ***/
 	if ($personPrivacy || $familyPrivacy || $parentPrivacy) {
 		$birthday['firstname'] = 'Private:';
