@@ -8,7 +8,7 @@ class TngApiCustom_Shortcode_ManniversariesPlusOne extends Upavadi_Shortcode_Abs
     {
         //$this->content->init();
 
-        $month = date('m' + 1);
+        $month = date('m') +1 ;
         $manniversariesplusone = $this->custom->getMarriageAnniversariesPlusOne($month); //custom137
         // Get Media
 		$url = $this->content->getTngUrl();
