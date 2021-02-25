@@ -78,7 +78,7 @@ $tngcontent = Upavadi_tngcontent::instance()->init();
 		$tree = $danniversary['gedcom'];
  
 		//get age at death
-		if ($danniversary['birthdatetr'] !== "0000-00-00") {
+		//if ($danniversary['birthdatetr'] !== "0000-00-00") {
 		$d_birtharray = explode("-", ($danniversary['birthdatetr']));
 		$d_birthyear = $d_birtharray[0];
 		$d_birthmonth = $d_birtharray[1];
@@ -95,27 +95,35 @@ $tngcontent = Upavadi_tngcontent::instance()->init();
 		$setDeathdate->format('c') . "<br / >\n";
 		$i = $setBirthdate->diff($setDeathdate);
 		$i->format("%Y");
-		$ageAtDeath = $i->format("%Y");
-		}	else { 	$ageAtDeath = "";
-		}	
+	
 		$personId = $danniversary['personid'];
 		$photosPath = $url. $photos;
 		$birthdate = $danniversary['birthdate'];
 		$deathdate = $danniversary['deathdate'];
-		//$setdeathmonth ->format("F");
 		$name = $danniversary['firstname']. " ". $danniversary['lastname'];
-		$d_dateObj   = DateTime::createFromFormat('!m', $deathmonth);
-		$d_monthName = $d_dateObj->format('F');
-		$deathday = $deatharray[2];
-		$b_dateObj   = DateTime::createFromFormat('!m', $d_birthmonth);
-		$b_monthName = $b_dateObj->format('F');
+
+		$b_monthName = date("F", mktime(0, 0, 0, $d_birhtmonth, 10)); 
+		$d_monthName = date("F", mktime(0, 0, 0, $deathmonth, 10));
+		
+
 		$birthdate = $d_birthday." ". $b_monthName. " ". $d_birthyear; 
 		$deathdate = $deathday." ". $d_monthName. " ". $deathyear;
 		$defaultmedia = $tngcontent->getDefaultMedia($personId, null);
+
+		if ($danniversary['birthdatetr'] !== "0000-00-00") {
+			$ageAtDeath = $i->format("%Y");
+			}
+			else 
+			{ 	
+				$ageAtDeath = "";
+				$birthdate = "";
+			}
+		
 		$photos = $tngcontent->getTngPhotoFolder();
 		$url = $tngcontent->getTngUrl();
 		$photosPath = $url. $photos;
 		$mediaID = $photosPath."/". $defaultmedia['thumbpath'];
+		
 	?>
 	<div style="margin: 35px"> 
 	<div style="margin: 10px">
@@ -123,8 +131,8 @@ $tngcontent = Upavadi_tngcontent::instance()->init();
 		echo "$mediaID";  ?>" border='1' height='50' border-color='#000000'/>
 		<?php echo $defaultmedia['thumbpath']; ?>
 	</div>
-	<div> <?php echo "<b>paste url first</b> www.upavadi.net"; ?> </div>
-	<div> <?php echo $name; ?> </div>
+	<div> <?php echo "http://www.upavadi.net"; ?> </div>
+	<div> <b><?php echo $name; ?></b> </div>
 	<div> <?php echo $Years. " years ago, today,". " ( ". $birthdate. " - ". $deathdate. " ), aged ". $ageAtDeath. " years."; ?> </div>
 	<div> Hari Aum.  🙏 🙏🙏🏼</div>
 	<div> 
